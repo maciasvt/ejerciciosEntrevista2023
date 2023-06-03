@@ -1,0 +1,86 @@
+<div class=container>
+
+  <div class="row text-center mt-4">
+    <h1>Reservar sala de juntas</h1>
+  </div>
+
+  <div class="row text-center mt-4">
+    <h2>Seleccionar sala</h2>
+  </div>
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="messageError.length>0">
+    <strong>{{messageError}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div>
+    <select class="form-select form-select-lg mb-3" [(ngModel)]="sala">
+      <option value="sala1">Sala 1</option>
+      <option value="sala2">Sala 2</option>
+      <option value="sala3">Sala 3</option>
+    </select>
+  </div>
+
+  <div class="row text-center mt-4">
+    <h2>Ingresa día</h2>
+  </div>
+
+  <div class="input-group mb-3">
+    <input class='form-control' type="date"
+      style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+      [(ngModel)]="fecha">
+    <div class="input-group-append">
+      <button type="button" class="btn btn-primary btn-lg" (click)="verificarButton()">Verificar</button>
+    </div>
+  </div>
+
+  <div class="row text-center mt-4">
+    <table class="table table-striped table-hover" style="font-size:100%">
+      <thead class="table-dark">
+        <tr>
+          <th>Horario</th>
+          <th>Status</th>
+          <th>Personas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of arrayDia">
+          <td>{{item.horario}}</td>
+          <td>{{item.status?"Ocupado":"Libre"}}</td>
+          <td>{{item.persona}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row text-center mt-4">
+    <h2>Seleccionar horario</h2>
+  </div>
+
+  <div>
+    <select class="form-select form-select-lg mb-3" name="titleClass" id="titleClass" [(ngModel)]="horario">
+      <option *ngFor="let class of horariosDisponibles" [value]=class>{{class}}</option>
+    </select>
+  </div>
+
+  <div class="row text-center mt-4">
+    <h2>Nombre</h2>
+  </div>
+
+  <div class="input-group mb-3">
+    <input class="form-control" type="text" placeholder="Nombre" disabled [(ngModel)]="persona">
+  </div>
+
+  <div class="col-md-12 text-center">
+    <button type="button" class="btn btn-primary btn-lg" (click)="apartarButton(reservacion)">Apartar</button>
+  </div>
+
+  <div class="row text-center mt-4">
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-danger btn-lg" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </div>
+
+</div>

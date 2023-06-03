@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card p-5">
+        <h1>Crear cuenta</h1>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="messageError.length>0">
+            <strong>{{messageError}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="input-group m-3">
+            <input class="form-control" type="text" placeholder="Coloque un usuario" [(ngModel)]="usuario">
+            <div class="input-group-append">
+            </div>
+            <div class="input-group m-3">
+                <input class="form-control" type="password" placeholder="Coloque una ontraseña" [(ngModel)]="password">
+            </div>
+            <div class="input-group m-3">
+                <input class="form-control" type="password" placeholder="Confirme la contraseña"
+                    [(ngModel)]="passwordConfirm">
+            </div>
+            <div class="mx-4">
+                <button type="button" class="btn btn-primary btn-lg" (click)="crear()">Crear</button>
+            </div>
+            <div class="mx-4">
+                <button type="button" class="btn btn-primary btn-lg" (click)="regresar()">Regresar</button>
+            </div>
+        </div>
+    </div>
+</div>
